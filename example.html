@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <link rel="icon" href="https://www.nps.gov/favicon.ico" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -28,45 +29,21 @@
     window.addEventListener("load", function () {
       const map = new maplibregl.Map({
         container: "Map",
+        hash: true,
         attributionControl: false,
-        style: {
-          version: 8,
-          sources: {},
-          layers: []
-        }
+        style: "https://DOI-NPS.github.io/npmap-style/standard.json",
+        zoom: 6,
+        center: [-88.648, 47.822]
       });
       map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
       map.addControl(
         new MaplibreGLBasemapsControl(
           {
-            basemaps: [
-              {
-                id: "ortoEsri",
-                tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"],
-                sourceExtraParams: {
-                  tileSize: 256,
-                  attribution: "ESRI &copy; <a href='http://www.esri.com'>ESRI</a>",
-                  minzoom: 0,
-                  maxzoom: 22
-                }
-              },
-              {
-                id: "OpenStreetMap",
-                tiles: [
-                  'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
-                ],
-                sourceExtraParams: {
-                  tileSize: 256,
-                  attribution: "&copy; OpenStreetMap Contributors",
-                  minzoom: 0,
-                  maxzoom: 20
-                }
-              }
-            ],
+            basemaps: [ {}],
             initialBasemap: "OpenStreetMap",
             expandDirection: "top"
           }),
-        "bottom-left"
+        "top-left"
       );
     });
   </script>
